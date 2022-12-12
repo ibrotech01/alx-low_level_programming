@@ -1,13 +1,12 @@
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 /**
  * main - Entry
  *
- * Return: 1
+ * Return: Always 1 (success)
  */
 
 int main(void)
 {
 	write(1, "and that piece of art is useful\n");
-	return (1);
+	return (1);
 }
