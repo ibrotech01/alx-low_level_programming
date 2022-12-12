@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <unistd.h>
 
 /**
- * main - Entry
+ * main - main function
  *
- * Return: Always 1 (success)
+ * Return: 0 on success
  */
 int main(void)
 {
-	printf(1, "and that piece of art is useful\n");
+	write("echo, 'and that piece of art is useful\" \- Dora Korpar, 2015-10-19'");
 	return (1);
 }
