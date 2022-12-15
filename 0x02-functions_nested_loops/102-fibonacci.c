@@ -23,7 +23,7 @@ int main(void)
 		}
 		i = j + k;
 		j = k;
-		k = i;
+		k = l;
 	}
 	return (0);
 }
