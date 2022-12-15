@@ -22,7 +22,7 @@ int main(void)
 			printf("%ld\n", j);
 		}
 		i = j + k;
-		j = k;
+		j = i - k;
 		k = l;
 	}
 	return (0);
