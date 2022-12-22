@@ -3,7 +3,8 @@
 /**
  * cap_string - capitalizes every first letter of a word in a string
  * separators of words are: space, tabulation
- * new line@s: POinter to string
+ * new line
+ * @s: POinter to string
  * Return: Pointer to s
  */
 
