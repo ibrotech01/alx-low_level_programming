@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * cap_string - Capitalizes all words of a string.
- * @str: The string to be capitalized.
- *
- * Return: A pointer to the changed string.
+ * cap_string - capitalizes every first letter of a word in a string
+ * separators of words are: space, tabulation
+ * new line@s: POinter to string
+ * Return: Pointer to s
  */
 
 char *cap_string(char *s)
