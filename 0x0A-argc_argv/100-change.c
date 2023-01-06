@@ -22,15 +22,12 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	
 	total = atoi(argv[1]); /*Covert str to int*/
-	
 	if (total <= 0)
 	{
 		printf("0\n");
 		return (0);
 	}
-
 	/*Declaring While*/
 	while (coins[position] != '\0')
 	{
