@@ -1,31 +1,31 @@
 #include "main.h"
 
 /**
- * _strspn - Entry point
- * @s: input
- * @accept: input
+ * _strspn - return length of string that matches values consistently
+ * @s: string to search
+ * @accept: target matches
  *
- * Return: Always 0 (Success)
+ * Return: number of bytes consecutively matched
  */
 
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int n = 0;
-	int r;
+	int i = 0, j;
+	int matches = 0;
 
-	while (*s)
+	while (s[i] != '\0') /*iterate through string*/
 	{
-		for (r = 0; accept[r]; r++)
+		for (j = 0; accept[j] != '\0'; j++) /*iterate through target*/
 		{
-			if (*s == accept[r])
+			if (s[i] == accept[j]) /*record & break at first match*/
 			{
-				n++;
+				matches++;
 				break;
 			}
-			else if (accept[r + 1] == '\0')
-				return (n);
+			if (accept[j + 1] == '\0' && s[i] != accept[j])
+				return (matches);/*return if idx doesn't match*/
 		}
-		s++;
+		i++;
 	}
-	return (n);
+	return (matches); /* return num if all match till end */
 }
