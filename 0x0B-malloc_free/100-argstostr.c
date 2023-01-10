@@ -23,22 +23,22 @@ char *argstostr(int ac, char **av)
 			b++;
 		}
 		a++;
-		count = count + ac + 1;
-		str = malloc(sizeof(char) * count);
-		if (str == NULL)
+	}
+	count = count + ac + 1;
+	str = malloc(sizeof(char) * count);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	for (a = 0; a < ac; a++)
+	{
+		for (b = 0; av[a][b] != '\0'; b++)
 		{
-			return (NULL);
-		}
-		for (a = 0; a < ac; a++)
-		{
-			for (b = 0; av[a][b] != '\0'; b++)
-			{
-				str[c] = av[a][b];
-				c++;
-			}
-			str[c] = '\n';
+			str[c] = av[a][b];
 			c++;
 		}
-		return (str);
+		str[c] = '\n';
+		c++;
 	}
+	return (str);
 }
