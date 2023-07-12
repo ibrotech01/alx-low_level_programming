@@ -1,68 +1,52 @@
 #include "search_algos.h"
 
 /**
- * advanced_binary - searches for a value in an array of
- * integers using the Binary search algorithm
- * @array: array to search the value in
+ * binary_recursive - a function that recursively searches for a value
+ * in a sorted array of integers using the Binary search algorithm
+ * @array: the array of integers
+ * @first: first index of the array
+ * @last: last index of the array
+ * @value: the value to search for
+ * Return: returns the index of value or -1 if not found
+ */
+int binary_recursive(int *array, size_t first, size_t last, int value)
+{
+	size_t mid;
+	int x;
+
+	if (!array || (int)last < (int)first)
+		return (-1);
+	printf("Searching in array: ");
+	for (mid = first; mid <= last; mid++)
+	{
+		if (mid != first)
+			printf(", ");
+		printf("%d", array[mid]);
+	}
+	printf("\n");
+	mid = (first + last) / 2;
+	if (array[first] == value && array[mid] == value)
+		return (first);
+	else if (array[mid] == value)
+		x = binary_recursive(array, first, mid, value);
+	else if (array[mid] > value)
+		x = (binary_recursive(array, first, mid - 1, value));
+	else if (array[mid] < value)
+		x = (binary_recursive(array, mid + 1, last, value));
+	return (x);
+}
+
+/**
+ * advanced_binary - a function that searches for a value
+ * in a sorted array of integers using the Binary search algorithm
+ * @array: the array of integers
  * @size: size of the array
- * @value: value to look for
- *
- * Return: the index of the found value,
- * or -1 if not found
+ * @value: the value to search for
+ * Return: returns the index of value or -1 if not found
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array || size == 0)
+	if (!array)
 		return (-1);
-
-	return (help_binary(array, value, 0, size - 1));
-}
-
-/**
- * help_binary - searches for a value in an array of
- * integers using recursion
- * @array: array to search the value in
- * @value: value to look for
- * @lo: index of the low bound
- * @hi: index of the high bound
- *
- * Return: the index of the found value,
- * or -1 if not found
- */
-int help_binary(int *array, int value, size_t lo, size_t hi)
-{
-	size_t mid;
-
-	array_print(array, lo, hi);
-	if (hi == lo && array[lo] != value)
-		return (-1);
-
-	mid = ((hi - lo) / 2) + lo;
-	if (array[mid] == value)
-		return (mid);
-	if (array[mid] < value)
-		return (help_binary(array, value, mid + 1, hi));
-	if (array[mid] > value)
-		return (help_binary(array, value, lo, mid - 1));
-	return (-1);
-}
-
-/**
- * array_print - prints an array
- * @array: array to print
- * @lo: index of the low bound
- * @hi: index of the high bound
- */
-void array_print(int *array, size_t lo, size_t hi)
-{
-	size_t i;
-
-	printf("Searching in array: ");
-	for (i = lo; i <= hi; i++)
-	{
-		printf("%d", array[i]);
-		if (i < hi)
-			printf(", ");
-	}
-	printf("\n");
+	return (binary_recursive(array, 0, size - 1, value));
 }
